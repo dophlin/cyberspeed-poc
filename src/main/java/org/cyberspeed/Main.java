@@ -15,7 +15,10 @@ public class Main {
     public static void main(String[] args) {
         // Extract the arguments and initiate the ScratchGame
         Main.handleArgs(args);
-        if(scratchGame != null) scratchGame.handleGame(); // Handle the game based on the input configuration and betting amount
+        if(scratchGame != null) {
+            scratchGame.generateSymbolForAllCells();
+            scratchGame.handleGame(); // Handle the game based on the input configuration and betting amount
+        }
     }
 
     private static void handleArgs(String[] args) {

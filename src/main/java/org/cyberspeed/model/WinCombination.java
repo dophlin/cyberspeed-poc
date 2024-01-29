@@ -1,4 +1,5 @@
 package org.cyberspeed.model;
+
 import java.util.List;
 
 public class WinCombination {
@@ -7,6 +8,23 @@ public class WinCombination {
     private Integer count;
     private String group;
     private List<List<String>> covered_areas;
+
+    public WinCombination() {
+    }
+
+    public WinCombination(double rewardMultiplier, String when, Integer count, String group) {
+        this.reward_multiplier = rewardMultiplier;
+        this.when = when;
+        this.count = count;
+        this.group = group;
+    }
+
+    public WinCombination(double rewardMultiplier, String when, String group, List<List<String>> coveredArea) {
+        this.reward_multiplier = rewardMultiplier;
+        this.when = when;
+        this.group = group;
+        this.covered_areas = coveredArea;
+    }
 
     public Double getReward_multiplier() {
         return reward_multiplier;

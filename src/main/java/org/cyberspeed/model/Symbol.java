@@ -10,6 +10,30 @@ public class Symbol {
         return reward_multiplier;
     }
 
+    public Symbol() {}
+
+    public Symbol(SymbolType symbolType, double rewardMultiplier) {
+        this.type = symbolType;
+        this.reward_multiplier = rewardMultiplier;
+    }
+
+    public Symbol(SymbolType symbolType, double rewardMultiplier, String impact) {
+        this.type = symbolType;
+        this.reward_multiplier = rewardMultiplier;
+        this.impact = impact;
+    }
+
+    public Symbol(SymbolType symbolType, String impact, double extra) {
+        this.type = symbolType;
+        this.extra = extra;
+        this.impact = impact;
+    }
+
+    public Symbol(SymbolType symbolType, String impact) {
+        this.type = symbolType;
+        this.impact = impact;
+    }
+
     public void setReward_multiplier(Double reward_multiplier) {
         this.reward_multiplier = reward_multiplier;
     }

@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f72562df-2766-4a0a-94cf-ce3175d4ae9e" name="Changes" comment="Reviewing the code and algorithms">
-      <change afterPath="$PROJECT_DIR$/assignment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/cyberspeed/ScratchGameTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cyberspeed/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cyberspeed/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cyberspeed/model/BonusProbability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cyberspeed/model/BonusProbability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cyberspeed/model/StandardProbability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cyberspeed/model/StandardProbability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cyberspeed/model/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cyberspeed/model/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cyberspeed/model/WinCombination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cyberspeed/model/WinCombination.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +32,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -34,31 +44,78 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.withParams.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/mohammad/IdeaProjects/cyberspeed-poc/src/main/java/org/cyberspeed/Main.java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.withParams.executor": "Run",
+    "JUnit.ScratchGameTest.testLostScenario.executor": "Run",
+    "JUnit.ScratchGameTest.testOutputResponse.executor": "Run",
+    "JUnit.ScratchGameTest.testWonScenario.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "/Users/mohammad/IdeaProjects/cyberspeed-poc/src/main/java/org/cyberspeed/Main.java",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.cyberspeed" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.withParams">
     <configuration name="withParams" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.cyberspeed.Main" />
       <module name="cyberspeed-poc" />
-      <option name="PROGRAM_PARAMETERS" value="--config config.json --betting-amount 123" />
+      <option name="PROGRAM_PARAMETERS" value="--config config.json --betting-amount 100" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FullTest" type="CompoundRunConfigurationType">
+      <toRun name="ScratchGameTest.testLostScenario" type="JUnit" />
+      <toRun name="ScratchGameTest.testWonScenario" type="JUnit" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ScratchGameTest.testLostScenario" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="cyberspeed-poc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.cyberspeed.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.cyberspeed" />
+      <option name="MAIN_CLASS_NAME" value="org.cyberspeed.ScratchGameTest" />
+      <option name="METHOD_NAME" value="testLostScenario" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScratchGameTest.testWonScenario" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="cyberspeed-poc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.cyberspeed.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.cyberspeed" />
+      <option name="MAIN_CLASS_NAME" value="org.cyberspeed.ScratchGameTest" />
+      <option name="METHOD_NAME" value="testWonScenario" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.withParams" />
+      <item itemvalue="Compound.FullTest" />
+      <item itemvalue="JUnit.ScratchGameTest.testLostScenario" />
+      <item itemvalue="JUnit.ScratchGameTest.testWonScenario" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -124,46 +181,41 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java</url>
-          <line>47</line>
+          <line>48</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java</url>
-          <line>119</line>
+          <line>121</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java</url>
-          <line>132</line>
+          <line>134</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java</url>
-          <line>135</line>
+          <line>137</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java</url>
-          <line>159</line>
+          <line>161</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java</url>
-          <line>165</line>
+          <line>167</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/cyberspeed/ScratchGame.java</url>
-          <line>181</line>
-          <option name="timeStamp" value="33" />
+          <url>file://$PROJECT_DIR$/src/test/java/org/cyberspeed/ScratchGameTest.java</url>
+          <line>169</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

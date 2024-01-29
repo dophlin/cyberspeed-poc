@@ -9,7 +9,8 @@ import java.util.*;
 public class ScratchGame {
     private final Configuration configuration; // The original input configuration
     private final Integer bettingAmount; // The input betting amount
-    private final Matrix matrix; // The generated matrix
+    private Matrix matrix; // The generated matrix
+    private String selectedBonusSymbol;
 
     private final RefactoredConfiguration refactoredConfiguration; // For convenient we calculate some values into refactoredConfiguration object
 
@@ -27,22 +28,22 @@ public class ScratchGame {
     public ScratchGame(Configuration configuration, Integer bettingAmount) {
         this.configuration = configuration;
         this.bettingAmount = bettingAmount;
-        matrix = new Matrix(this.configuration.getRows(), this.configuration.getColumns());
         refactoredConfiguration = new RefactoredConfiguration(this.configuration);
     }
 
-    public void handleGame() {
-        // Generating the matrix and filling its cells with standard symbols based on the symbols properties
+    public void generateSymbolForAllCells() {
+        matrix = new Matrix(this.configuration.getRows(), this.configuration.getColumns());
         for (int i = 0; i < matrix.getRows(); i++) {
             for (int j = 0; j < matrix.getCols(); j++) {
                 generateSymbolForCell(i, j);
             }
         }
-
-        String selectedBonusSymbol = generateBonusSymbol(); // Select a bonus symbol based on the symbol properties
+        selectedBonusSymbol = generateBonusSymbol(); // Select a bonus symbol based on the symbol properties
         Integer[] selectedBonusCell = selectBonusCell(); // Randomly select a cell for bonus symbol
         matrix.setValue(selectedBonusCell[0], selectedBonusCell[1], selectedBonusSymbol);
+    }
 
+    public OutputResponse handleGame() {
 
         // The winning combinations values are calculated by here
         Map<String, Collection<WinCombinationPair>> appliedWinningCombinations = calculateWinningCombinations();
@@ -64,6 +65,7 @@ public class ScratchGame {
 
         OutputResponse outputResponse = new OutputResponse(matrix.getMatrix(), (int) Math.floor(finalReward), appliedWinningCombinationsNames, selectedBonusSymbol);
         printJson(outputResponse); // Printing the output response in the console
+        return outputResponse;
     }
 
     private void printJson(OutputResponse output) {
@@ -225,5 +227,10 @@ public class ScratchGame {
             default:
                 throw new RuntimeException("InvalidImpact");
         }
+    }
+
+    public void overwriteMatrix(Matrix matrix, String selectedBonusSymbol) {
+        this.matrix = matrix;
+        this.selectedBonusSymbol = selectedBonusSymbol;
     }
 }
