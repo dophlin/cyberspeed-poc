@@ -1,4 +1,4 @@
-package org.cyberspeed;
+package org.cyberspeed.model;
 
 public class Symbol {
     private Double reward_multiplier;

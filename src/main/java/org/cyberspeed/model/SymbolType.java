@@ -1,4 +1,4 @@
-package org.cyberspeed;
+package org.cyberspeed.model;
 
 public enum SymbolType {
     BONUS("bonus"),

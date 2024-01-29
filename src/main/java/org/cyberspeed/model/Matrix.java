@@ -1,4 +1,4 @@
-package org.cyberspeed;
+package org.cyberspeed.model;
 
 public class Matrix {
     private final String[][] matrix;
@@ -34,6 +34,10 @@ public class Matrix {
             System.out.println("Invalid row or column index");
             throw new RuntimeException("InvalidRowOrColumn");
         }
+    }
+
+    public String[][] getMatrix() {
+        return matrix;
     }
 
     public void printMatrix() {

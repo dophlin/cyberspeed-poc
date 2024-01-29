@@ -1,4 +1,4 @@
-package org.cyberspeed;
+package org.cyberspeed.model;
 import java.util.List;
 
 public class WinCombination {

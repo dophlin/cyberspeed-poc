@@ -1,14 +1,19 @@
 package org.cyberspeed;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.cyberspeed.model.*;
+
 import java.util.*;
 
 public class ScratchGame {
-    private final Configuration configuration;
-    private final Integer bettingAmount;
-    private final Matrix matrix;
+    private final Configuration configuration; // The original input configuration
+    private final Integer bettingAmount; // The input betting amount
+    private final Matrix matrix; // The generated matrix
 
-    private final RefactoredConfiguration refactoredConfiguration;
+    private final RefactoredConfiguration refactoredConfiguration; // For convenient we calculate some values into refactoredConfiguration object
 
+    // For more readability a Pair class is defined for storing winCombination name and reward
     private static class WinCombinationPair {
         String winCombinationName;
         double rewardMultiplier;
@@ -27,24 +32,48 @@ public class ScratchGame {
     }
 
     public void handleGame() {
+        // Generating the matrix and filling its cells with standard symbols based on the symbols properties
         for (int i = 0; i < matrix.getRows(); i++) {
             for (int j = 0; j < matrix.getCols(); j++) {
                 generateSymbolForCell(i, j);
             }
         }
 
-        String selectedBonusSymbol = generateBonusSymbol();
-        Integer[] selectedBonusCell = selectBonusCell();
+        String selectedBonusSymbol = generateBonusSymbol(); // Select a bonus symbol based on the symbol properties
+        Integer[] selectedBonusCell = selectBonusCell(); // Randomly select a cell for bonus symbol
         matrix.setValue(selectedBonusCell[0], selectedBonusCell[1], selectedBonusSymbol);
 
-//        matrix.fillTestMatrix();
 
+        // The winning combinations values are calculated by here
         Map<String, Collection<WinCombinationPair>> appliedWinningCombinations = calculateWinningCombinations();
 
+        // Based on the calculated winning combinations values, the final reward value is calculated by here
         Double finalReward = calculateFinalReward(appliedWinningCombinations, selectedBonusSymbol);
 
-        matrix.printMatrix();
-        System.out.println("Let see: " + finalReward);
+        // Preparing the output response to be print later
+        Map<String, List<String>> appliedWinningCombinationsNames = new HashMap<>();
+        for(String symbol : appliedWinningCombinations.keySet()) {
+            List<String> winCombinationNames = new ArrayList<>();
+            for(WinCombinationPair winCombinationPair : appliedWinningCombinations.get(symbol)) {
+                winCombinationNames.add(winCombinationPair.winCombinationName);
+            }
+            if(winCombinationNames.isEmpty()) continue;
+            appliedWinningCombinationsNames.put(symbol, winCombinationNames);
+        }
+        if (finalReward == 0) selectedBonusSymbol = null; // If it is a lost, there should be 'applied_winning_combinations' and 'applied_bonus_symbol' in the output
+
+        OutputResponse outputResponse = new OutputResponse(matrix.getMatrix(), (int) Math.floor(finalReward), appliedWinningCombinationsNames, selectedBonusSymbol);
+        printJson(outputResponse); // Printing the output response in the console
+    }
+
+    private void printJson(OutputResponse output) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(output);
+            System.out.println(jsonString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     private void generateSymbolForCell(int row, int col) {
@@ -89,10 +118,15 @@ public class ScratchGame {
     private Map<String, Collection<WinCombinationPair>> calculateWinningCombinations() {
         Map<String, Collection<WinCombinationPair>> winningCombinations = new HashMap<>();
         for (String symbol : refactoredConfiguration.getStandardSymbols()) {
+            // Calculating the winning combinations for each symbol
             winningCombinations.put(symbol, calculateWinningCombinationsForSymbol(symbol));
         }
         return winningCombinations;
     }
+
+    // There are 5 different group of the winning combinations, here it is looped over each group
+    // and selects the highest reward winning combination of each group.
+    // (Practically, only 'same_symbols' group has several winning combinations, other groups are only applicable once)
     private Collection<WinCombinationPair> calculateWinningCombinationsForSymbol(String symbol) {
         Map<String, WinCombinationPair> winCombinationGroups = new HashMap<>();
         for (String winCombinationName : configuration.getWin_combinations().keySet()) {
@@ -142,15 +176,16 @@ public class ScratchGame {
         return isMatched ? winCombination.getReward_multiplier() : 0;
     }
 
+    // This algorithm considers the coveredArea input
+    // and checks if the selected symbol is repeated based on the coveredArea or not
     private boolean patternCheck(List<String> coveredArea, String symbol) {
-        boolean hasFailed = false;
         for (String s : coveredArea) {
             String[] indexes = s.split(":");
             if (indexes.length != 2) throw new RuntimeException("InvalidCoveredArea");
             try {
                 int row = Integer.parseInt(indexes[0]);
                 int col = Integer.parseInt(indexes[1]);
-                hasFailed = !matrix.getValue(row, col).equals(symbol);
+                boolean hasFailed = !matrix.getValue(row, col).equals(symbol);
                 if(hasFailed) return false;
             } catch (NumberFormatException e) {
                 throw new RuntimeException("CoveredAreaIndexNumberFormatException");
