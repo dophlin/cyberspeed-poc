@@ -87,7 +87,7 @@ public class ScratchGame {
     }
 
     private Map<String, Collection<WinCombinationPair>> calculateWinningCombinations() {
-        Map<String, Collection<WinCombinationPair>> winningCombinations = new HashMap();
+        Map<String, Collection<WinCombinationPair>> winningCombinations = new HashMap<>();
         for (String symbol : refactoredConfiguration.getStandardSymbols()) {
             winningCombinations.put(symbol, calculateWinningCombinationsForSymbol(symbol));
         }
@@ -156,7 +156,7 @@ public class ScratchGame {
                 throw new RuntimeException("CoveredAreaIndexNumberFormatException");
             }
         }
-        return !hasFailed;
+        return true;
     }
 
     private Double calculateFinalReward(Map<String, Collection<WinCombinationPair>> appliedWinningCombinations, String appliedBonusSymbol) {

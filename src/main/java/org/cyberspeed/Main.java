@@ -1,6 +1,5 @@
 package org.cyberspeed;
 
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,10 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    private static Configuration _configuration;
     private static ScratchGame scratchGame = null;
     public static void main(String[] args) {
-        System.out.printf("Hello and welcome!");
         Main.handleArgs(args);
         if(scratchGame != null) scratchGame.handleGame();
     }

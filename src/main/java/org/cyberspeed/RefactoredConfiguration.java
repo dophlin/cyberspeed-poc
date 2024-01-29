@@ -5,9 +5,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class RefactoredConfiguration {
-    private Map<String, Integer>[][] standardSymbolWeights;
-    private Map<String, Integer> bonusSymbolWeights;
-    private Set<String> standardSymbols;
+    private final Map<String, Integer>[][] standardSymbolWeights;
+    private final Map<String, Integer> bonusSymbolWeights;
+    private final Set<String> standardSymbols;
 
     public RefactoredConfiguration(Configuration configuration) {
         standardSymbolWeights = new HashMap[configuration.getRows()][configuration.getColumns()];
