@@ -28,4 +28,34 @@ The solution is engineered to encompass the following key components, collective
 ## Additional Notes
 
 - The code is thoroughly commented to aid in understanding the flow and functionality.
+- Two test scenarios are provided in the project: One Win scenario and one Loss scenario.
 - This PoC serves as a foundational blueprint and can be extended or modified to suit diverse gaming scenarios.
+- For some reason, the provided 'reward' value in some samples of the 'assignment.md' may not be correct, but the PoC calculates the reward values mathematically correct.
+- The 'reward' value is calculated in the double format but for the print output, it is cast to int to be matched with the 'assignment.md' document.
+- - The value of 'correct_area' in the 'same_symbols_horizontally' winning combination in the original assignment.md was not probably correct, so I fixed it:
+  - Previous value:
+    ```javascript
+       "same_symbols_horizontally": { // OPTIONAL
+            "reward_multiplier": 2,
+            "when": "linear_symbols",
+            "group": "horizontally_linear_symbols",
+            "covered_areas": [
+                ["0:0", "0:1", "0:2"],
+                ["1:0", "1:1", "1:1"], // the third column value is "1:1"
+                ["2:0", "2:1", "2:2"]
+            ]
+        }
+    ```
+  - Fixed value:
+    ```javascript
+       "same_symbols_horizontally": { // OPTIONAL
+            "reward_multiplier": 2,
+            "when": "linear_symbols",
+            "group": "horizontally_linear_symbols",
+            "covered_areas": [
+                ["0:0", "0:1", "0:2"],
+                ["1:0", "1:1", "1:2"], // the third column value has changed to "1:2"
+                ["2:0", "2:1", "2:2"]
+            ]
+        }
+    ```
