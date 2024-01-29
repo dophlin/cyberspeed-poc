@@ -7,7 +7,9 @@ This repository contains the implementation for a Proof of Concept (PoC) assignm
 ## Solution Architecture
 
 The solution is engineered to encompass the following key components, collectively forming the backbone of the scratch game simulation:
+
 ![Image description](./diagram.svg)
+
 
 1. **Configuration Extraction**: Initialization begins with the extraction of game configuration parameters and the betting amount, derived from the input arguments.
 
