@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the implementation for a Proof of Concept (PoC) assignment focusing on a scratch game simulation. The project has been meticulously crafted to demonstrate a structured approach to game logic development, ensuring the core functionalities align with the specified requirements. For detailed assignment criteria, please consult `assignment.txt` included in this repository.
+This repository contains the implementation for a Proof of Concept (PoC) assignment focusing on a scratch game simulation. The project has been meticulously crafted to demonstrate a structured approach to game logic development, ensuring the core functionalities align with the specified requirements. For detailed assignment criteria, please consult `assignment.md` included in this repository.
 
 ## Solution Architecture
 
